@@ -10,7 +10,7 @@ using PlotThemes
 
 theme(:gluon_report) ## theme for the plot package
 
-D_full = CSV.read("creditcard.csv", types=Dict("Time"=>Float64), rows=20001, allowmissing=:none) ## load data ,
+D_full = CSV.read("creditcard.csv", types=Dict("Time"=>Float64), allowmissing=:none) ## load data ,
 D_full[:V0] = fill(1.0, length(D_full[:V1]))
 D_full[D_full[:Class] .== 0.0, :Class] = -1.0
 N_full = size(D_full, 1)
@@ -50,3 +50,4 @@ scatter([D_full[D_full[:Class] .== -1.0, x_val], D_full[D_full[:Class] .== 1.0, 
 
 
 @df D_full corrplot([:V2 :V3 :V4])
+
